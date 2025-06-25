@@ -1,0 +1,28 @@
+.balance-w {
+    width: 80%;
+    border-radius: 2vw 0 0 2vw;
+}
+
+.w-icon {
+  width: 20%;
+  border-radius: 0 2vw 2vw 0;
+}
+
+.w-icon > i {
+  position: relative;
+  top: 1rem;
+}
+
+.side-bar {
+  position: relative;
+  left: 2rem;
+}
+
+.side-bar > li > * {
+  text-decoration: none;
+}
+
+.hover:hover {
+  background-color: #121323;
+  color: white;
+}
