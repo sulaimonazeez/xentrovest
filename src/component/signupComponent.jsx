@@ -40,7 +40,6 @@ const SignupForm = () => {
         password: form.password,
       });
 
-      const data = response.data;
 
       // Save access token and refresh token to localStorage
       if (response.status === 201 || response.status === 200) {

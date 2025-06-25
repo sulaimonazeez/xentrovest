@@ -6,7 +6,7 @@ import Dashboard from "./homeAssets/dashboard.jsx";
 import LiveTrade from "./homeAssets/liveTrade.jsx";
 import CryptoMarket from "./homeAssets/markets.jsx";
 import RecentTransaction from "./homeAssets/recentTransaction.jsx";
-import Investment from "./homeAssets/investment.jsx";
+//import Investment from "./homeAssets/investment.jsx";
 
 
 const Home = () =>{

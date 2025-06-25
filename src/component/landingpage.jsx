@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/landingpage.css";
 import logo from "../assets/logo.svg";
-import {Link} from "react-router-dom";
+//import {Link} from "react-router-dom";
 import Main from "./LandingAssets/main.jsx";
 import Footer from './footer.jsx';
 import Header from "./headers.jsx";

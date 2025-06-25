@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Landing from "./component/landingpage.jsx";
@@ -29,10 +28,6 @@ const isAuthenticated = () => {
   }
   console.log("Access Token Valid for route access.");
   return true;
-};
-const clearTokens = () => {
-  localStorage.removeItem("access_token");
-  localStorage.removeItem("expires_in");
 };
 
 const PrivateRoute = ({ element }) => {

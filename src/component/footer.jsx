@@ -4,7 +4,7 @@ const Footer = ({ logo }) =>{
   return (
     <div>
       <div className="container-fluid">
-          <div className="d-flex"><img className="img logo" src={logo} /><h3 style={{ position: "relative", "left":"0.60rem"}} className="mt-1 text-light">Xentrovest</h3></div>
+          <div className="d-flex"><img className="img logo" src={logo} alt="Logo"/><h3 style={{ position: "relative", "left":"0.60rem"}} className="mt-1 text-light">Xentrovest</h3></div>
           <p className="mt-3 sm text-secondary">Tradenex is a platform that allows novice traders to copy/mirror professional traders' positions. We create all of the materials to assist you in growing and progressing to the next level. We're delighted you came across Our Company.</p>
           <div className="row mt-5">
             <div className="col-xs-12 col-sm-12 col-lg-4 col-12">

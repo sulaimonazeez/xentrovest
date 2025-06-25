@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Investment = ({plan, amount, level1, level2, level3, colors, type}) => {
   return (
     <div className={`myround p-3 container-fluid bg-dark mt-4 ${colors}`}>
@@ -13,7 +13,7 @@ const Investment = ({plan, amount, level1, level2, level3, colors, type}) => {
       <div className="mt-2 mb-2">
         <input type={type} className="form-control w-100" placeholder="Amount"/>
       </div>
-      <a href="#" className="rounded btn btn-warning w-100 p-2">Invest Now</a>
+      <Link href="#" className="rounded btn btn-warning w-100 p-2">Invest Now</Link>
     </div>
   )
 }

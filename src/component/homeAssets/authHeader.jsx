@@ -15,8 +15,8 @@ return (
             <img className="logo" src={logo} alt="logo" style={{ height: "40px" }} />
           </div>
           <div className="d-flex align-items-center gap-3">
-            <a href="#" className="nav-link text-white"><i className="bi bi-sun-fill"></i> </a> 
-            <a href="#" className="btn btn-warning rounded-pill px-3">AV</a>
+            <Link to="#" className="nav-link text-white"><i className="bi bi-sun-fill"></i> </Link> 
+            <Link to="#" className="btn btn-warning rounded-pill px-3">AV</Link>
             <button onClick={toggleSidebar} className="btn btn-link text-white fs-2"> <i className="bi bi-list"></i> </button> 
           </div> 
         </nav> 

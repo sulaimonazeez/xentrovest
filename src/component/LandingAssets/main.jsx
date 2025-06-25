@@ -28,7 +28,7 @@ const Main = ({img}) => {
     </div>
       <div className="mt-4 bg-black portfolio p-1">
         <p className="mt-5 text-center"><span className="text-primary">Markets</span> By TradingView</p>
-        <img className="mt-5 w-100" src={img} />
+        <img className="mt-5 w-100" src={img} alt="BTC"/>
         <div className="mb-5">
           <Market header={"We Have 10+ Years of experiance in standard professional services"} text={"A platform that allows novice traders to copy/mirror professional traders' positions. We create all of the materials to assist you in growing and progressing to the next level. We're delighted you came across Our Company. Don't pass up this chance to hear about what we do and the incredible team that makes it all possible! "}/>
         </div>

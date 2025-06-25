@@ -48,13 +48,7 @@ const CryptoMarket = () => {
                   {coin.name} ({coin.symbol.toUpperCase()})
                 </td>
                 <td className="text-black">${coin.current_price.toLocaleString()}</td>
-                <td className="text-black"
-                  className={
-                    coin.price_change_percentage_24h >= 0
-                      ? "text-success"
-                      : "text-danger"
-                  }
-                >
+                <td className="text-black">
                   {coin.price_change_percentage_24h.toFixed(2)}%
                 </td>
                 <td className="text-black">${coin.market_cap.toLocaleString()}</td>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthHeader from "./homeAssets/authHeader.jsx";
 import logo from "../assets/logo.svg";
-import { BiCopy, BiSearch } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
 import "../css/home.css";
 
 const Refferal = () => {
