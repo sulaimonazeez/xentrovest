@@ -47,9 +47,22 @@ const handleSubmit = async (e) => {
     };
 
 useEffect(() =>{
-  if (localStorage.getItem("access_token")){
+  const accessToken = localStorage.getItem("access_token");
+  const expiresIn = localStorage.getItem("expires_in");
+
+  if (!accessToken || !expiresIn || Date.now() >= parseInt(expiresIn)) {
+    if (accessToken && expiresIn && Date.now() >= parseInt(expiresIn)) {
+      console.log("Access token expired for route protection. Logging out.");
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('expires_in');
+    } else if (!accessToken) {
+      console.log("No access token found. Ensuring logout state.");
+    }
+  } else {
     navigate("/home")
   }
+
+
 }, [navigate])
   return (
     <div className="container-fluids">
