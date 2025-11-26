@@ -9,9 +9,10 @@ import portfolio from "../assets/portfolio.svg";
 import SubMain from "./LandingAssets/submain.jsx";
 
 
+
 const Landing = () => {
   return (
-    <div className="text-white min-vh-100">
+    <div className="bg-dark text-white min-vh-100">
       <Header logo={ logo }/>
       <div className="main">
         <Main img={ portfolio } />

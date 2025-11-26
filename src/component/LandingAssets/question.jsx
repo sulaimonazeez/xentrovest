@@ -1,4 +1,6 @@
 import React, { useState } from "react"; import { motion, AnimatePresence } from "framer-motion"; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const faqs = [ { question: "What is Xentrovest?", answer: "Xentrovest is a platform that allows you to purchase airtime, data, pay bills, and more in seconds with ease.", }, { question: "Is xentrovest secure?", answer: "Yes, we use bank-level security and industry best practices to ensure your data and transactions are safe.", }, { question: "How can I contact support?", answer: "You can reach out to our support team via email or use the in-app live chat feature for assistance.", }, ];
 

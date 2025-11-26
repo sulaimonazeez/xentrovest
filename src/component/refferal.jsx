@@ -3,6 +3,8 @@ import AuthHeader from "./homeAssets/authHeader.jsx";
 import logo from "../assets/logo.svg";
 import { BiSearch } from "react-icons/bi";
 import "../css/home.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const Refferal = () => {
   const referralLink = "https://tradenex.netlify.app/register?ref=yourusername";

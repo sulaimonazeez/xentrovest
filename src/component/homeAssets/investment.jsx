@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+
 const Investment = ({plan, amount, level1, level2, level3, colors, type}) => {
   return (
     <div className={`myround p-3 container-fluid bg-dark mt-4 ${colors}`}>

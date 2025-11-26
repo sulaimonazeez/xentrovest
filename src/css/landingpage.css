@@ -44,25 +44,25 @@
 .btn-learn {
   background-color: #212221;
   color: white;
-  width: 10rem;
+  display: block;
   position: relative;
-  left: 0.5rem;
 }
+
 
 header {
-  background-color: #101010!important;
-  backdrop-filter: blur(10px);       /* 👈 This blurs the background behind */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.3)!important;
   
 }
-
 .main {
-  margin-top: 7rem;
+  margin-top: 3rem;
 }
 
 .main-text {
-  color: lightgrey;
+  color: grey;
+  font-size: 1rem;
+  margin-top: 1rem;
 }
 
 .main-header {
@@ -115,4 +115,52 @@ ul > li {
   list-style: none;
   position: relative;
   left: -1.7rem;
+}
+.footer-adjust {
+  padding: 0.5rem;
+}
+.w-md-25 {
+  width: 50%;
+}
+
+h1, h2, h5, h3{
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.rates {
+  padding: 0.2rem;
+}
+.main-containers {
+  padding: 1rem;
+}
+
+.font {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #d1d1d1;
+}
+.fs-0 {
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .w-md-25 { 
+    width: 25%; 
+  }
+  .fs-0 {
+  font-size: 2.5rem;
+}
+  .main-header {
+    font-size: 3.8rem;
+  }
+  .sm {
+    font-size: 1rem;
+  }
 }

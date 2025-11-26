@@ -1,6 +1,9 @@
 import React, { useState } from 'react'; import { QRCodeCanvas } from "qrcode.react";
 import axiosInstance from "../utility.jsx";
 import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 const DepositForm = () => {
   const [selectedMethod, setSelectedMethod] = useState('');
@@ -20,7 +23,7 @@ const handleCopy = () => { navigator.clipboard.writeText(btcAddress); alert('BTC
 
 const handleDeposit = async () => {
   setDisable(true);
-  let response = await axiosInstance.post("/deposit/", {"amount":amount});
+  let response = await axiosInstance.post("/auth/deposit", {"amount":amount, "coinType":selectedMethod});
   if (response.status === 200 || response.status === 201) {
     navigate("/transaction");
   }

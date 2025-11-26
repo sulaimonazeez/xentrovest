@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const CryptoMarket = () => {
   const [coins, setCoins] = useState([]);
@@ -18,7 +19,7 @@ const CryptoMarket = () => {
     <div className="py-5">
       <p className="sm text-secondary">Crypto Currency Market</p>
       <div className="table-responsive shadow rounded">
-        <table className="table table-hover table-bordered table-dark mb-0">
+        <table className="table table-hover table-striped table-bordered table-dark mb-0">
           <thead className="text-warning">
             <tr className="text-secondary">
               <th className="text-secondary">Name</th>
@@ -47,11 +48,11 @@ const CryptoMarket = () => {
                   />
                   {coin.name} ({coin.symbol.toUpperCase()})
                 </td>
-                <td className="text-black">${coin.current_price.toLocaleString()}</td>
-                <td className="text-black">
+                <td className="text-white">${coin.current_price.toLocaleString()}</td>
+                <td className="text-white">
                   {coin.price_change_percentage_24h.toFixed(2)}%
                 </td>
-                <td className="text-black">${coin.market_cap.toLocaleString()}</td>
+                <td className="text-white">${coin.market_cap.toLocaleString()}</td>
               </motion.tr>
             ))}
           </tbody>

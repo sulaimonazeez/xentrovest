@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 const Box = ({plan, amount, level1, level2, level3, colors}) => {
   return (
     <div className={`bg-dark myround p-3 container-fluid mt-4 ${colors}`}>

@@ -1,43 +1,67 @@
 import React from "react";
-
-const Footer = ({ logo }) =>{
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "./footer.css";
+const Footer = ({ logo }) => {
   return (
-    <div>
-      <div className="container-fluid">
-          <div className="d-flex"><img className="img logo" src={logo} alt="Logo"/><h3 style={{ position: "relative", "left":"0.60rem"}} className="mt-1 text-light">Xentrovest</h3></div>
-          <p className="mt-3 sm text-secondary">Tradenex is a platform that allows novice traders to copy/mirror professional traders' positions. We create all of the materials to assist you in growing and progressing to the next level. We're delighted you came across Our Company.</p>
-          <div className="row mt-5">
-            <div className="col-xs-12 col-sm-12 col-lg-4 col-12">
-              <h3 className="text-light">Quick Links</h3>
-              <ul>
-                <li className="sm text-secondary">Home</li>
-                <li className="sm text-secondary">About</li>
-                <li className="sm text-secondary">Plans</li>
-                <li className="sm text-secondary">Contact</li>
-              </ul>
+    <footer className="bg-dark text-light pt-5 pb-4 mt-5">
+      <div className="container">
+        <div className="row gy-4">
+
+          {/* Logo + About */}
+          <div className="col-12 col-md-6 col-lg-4">
+            <div className="d-flex align-items-center mb-3">
+              <img src={logo} alt="Logo" style={{ width: "45px" }} />
+              <h3 className="ms-2 mb-0">Xentrovest</h3>
             </div>
-            <div className="col-xs-12 col-sm-12 col-lg-4 col-12">
-              <h3 className="text-light">Legal</h3>
-              <ul>
-                <li className="sm text-secondary">Terms of Service</li>
-                <li className="sm text-secondary">Privacy Policy</li>
-              </ul>
-            </div>
-            <div className="col-xs-12 col-sm-12 col-lg-4 col-12">
-              <h3 className="text-light">Company</h3>
-              <ul>
-                <li className="sm text-secondary">Copy Trading</li>
-                <li className="sm text-secondary">Referral Program</li>
-                <li className="sm text-secondary">Blog</li>
-              </ul>
-            </div>
+            <p className="text-secondary">
+              Tradenex is a platform that allows novice traders to copy/mirror
+              professional traders' positions. We provide all the resources you
+              need to grow and elevate your trading journey.
+            </p>
           </div>
+
+          {/* Quick Links */}
+          <div className="col-6 col-md-6 col-lg-2">
+            <h5 className="mb-3">Quick Links</h5>
+            <ul className="list-unstyled text-secondary">
+              <li>Home</li>
+              <li>About</li>
+              <li>Plans</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div className="col-6 col-md-6 col-lg-2">
+            <h5 className="mb-3">Legal</h5>
+            <ul className="list-unstyled text-secondary">
+              <li>Terms of Service</li>
+              <li>Privacy Policy</li>
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div className="col-6 col-md-6 col-lg-2">
+            <h5 className="mb-3">Company</h5>
+            <ul className="list-unstyled text-secondary">
+              <li>Copy Trading</li>
+              <li>Referral Program</li>
+              <li>Blog</li>
+            </ul>
+          </div>
+
         </div>
-        <div style={{height:"8rem"}} className="bg-black text-center">
-          <p className="p-5 mt-5 text-secondary text-center">© 2025 Xentrovest. All rights reserved.</p>
+
+        {/* Bottom Footer */}
+        <div className="text-center mt-4 pt-3 border-top border-secondary">
+          <small className="text-secondary">
+            © 2025 Xentrovest. All rights reserved.
+          </small>
         </div>
-    </div>
-  )
-}
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;

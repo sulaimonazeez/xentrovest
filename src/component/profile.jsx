@@ -1,16 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AuthHeader from "./homeAssets/authHeader.jsx";
+import { logout } from "./auth";
+import axios from "axios";
 import logo from "../assets/logo.svg";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const Profile = () => {
+  const [email, setEmail] = useState("loading...");
+  const [firstName, setFirstName] = useState("loading...");
+  const [lastName, setLastName] = useState("loading...");
+  const [phone, setPhone] = useState("loading...");
+  const [country, setCountry] = useState("loading...");
+
+  const access_token = localStorage.getItem("access_token");
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get(
+          "https://backend-logic-ohjo.vercel.app/auth/profile/",
+          {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            },
+          }
+        );
+
+        const data = response.data;
+
+        // Split fullname into first and last name
+        const names = data.fullname ? data.fullname.split(" ") : ["", ""];
+        setFirstName(names[0]);
+        setLastName(names.slice(1).join(" "));
+        setEmail(data.email || "");
+        setPhone(data.phone || "");
+        setCountry(data.country || "");
+      } catch (err) {
+        console.error(err);
+        // Token expired or invalid
+        localStorage.removeItem("access_token");
+        logout();
+      }
+    };
+
+    if (access_token) fetchProfile();
+  }, [access_token]);
+
+  // Generate initials dynamically
+  const initials = `${firstName[0] || ""}${lastName[0] || ""}`.toUpperCase();
+
   const user = {
-    name: "Ade VidXpert",
-    email: "hacihod638@saproy.com",
-    initials: "AV",
-    referralLink: "https://tradenex.netlify.app/register/12345",
-    phone: "+234 800 000 0000",
-    country: "Nigeria",
-    status: "Active"
+    name: `${firstName} ${lastName}`,
+    email,
+    initials,
+    referralLink: "https://xentrovest.vercel.app/register/4636",
+    phone,
+    country,
+    status: "Active",
   };
 
   const handleCopy = () => {
@@ -43,7 +90,9 @@ const Profile = () => {
             </div>
             <h5 className="mt-3 fw-bold">{user.name}</h5>
             <p className="text-secondary text-decoration-underline">{user.email}</p>
-            <span className="badge bg-success bg-opacity-25 text-success px-3 py-2 rounded-pill">{user.status}</span>
+            <span className="badge bg-success bg-opacity-25 text-success px-3 py-2 rounded-pill">
+              {user.status}
+            </span>
           </div>
         </div>
 
@@ -57,7 +106,10 @@ const Profile = () => {
               value={user.referralLink}
               readOnly
             />
-            <button className="btn btn-outline-dark text-secondary" onClick={handleCopy}>
+            <button
+              className="btn btn-outline-dark text-secondary"
+              onClick={handleCopy}
+            >
               Copy
             </button>
           </div>
@@ -71,7 +123,8 @@ const Profile = () => {
             <input
               type="text"
               className="form-control bg-dark text-secondary border-0"
-              defaultValue={user.phone}
+              value={user.phone}
+              onChange={(e) => setPhone(e.target.value)}
             />
           </div>
           <div className="mb-3">
@@ -79,10 +132,13 @@ const Profile = () => {
             <input
               type="text"
               className="form-control bg-dark text-secondary border-0"
-              defaultValue={user.country}
+              value={user.country}
+              onChange={(e) => setCountry(e.target.value)}
             />
           </div>
-          <button className="btn btn-warning w-100 fw-bold text-dark">Update Profile</button>
+          <button className="btn btn-warning w-100 fw-bold text-dark">
+            Update Profile
+          </button>
         </div>
       </div>
     </div>

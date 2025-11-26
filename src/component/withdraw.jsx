@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import AuthHeader from "./homeAssets/authHeader.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import logo from "../assets/logo.svg";
 import axiosInstance from "./utility.jsx";
 

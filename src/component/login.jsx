@@ -1,126 +1,145 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Header from "./headers.jsx";
 import Footer from "./footer.jsx";
 import logo from "../assets/logo.svg";
 import { motion } from "framer-motion";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(null);
+  const { login } = useContext(AuthContext);
 
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // handle input change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
+    try {
+      const res = await axios.post(
+        "https://backend-logic-ohjo.vercel.app/api/login/",
+        form
+      );
 
-const handleSubmit = async (e) => {
-        e.preventDefault();
-        setSubmitted(true);
-        setError(null);
-        const userCredentials = { "email": form.email, "password": form.password };
-        try {
-            const response = await axios.post("https://xentrovest.pythonanywhere.com/api/login/", userCredentials, {
-                headers: { "Content-Type": "application/json" },
+      const { user, token, expires_in } = res.data;
 
-                withCredentials: true,
-            });
-            const { access_token, expires_in} = response.data;
-            const expiresAt = Date.now() + expires_in * 1000;
-            
-            localStorage.setItem("access_token", access_token);
-            localStorage.setItem("expires_in", expiresAt.toString()); // Store as a string
+      localStorage.setItem("role", user.role);
+      login(user, token, expires_in);
 
-            alert("Login Successful!");
-            navigate("/home");
-
-        } catch (error) {
-            setError("Invalid credentials or network error");
-            console.error(error);
-        } finally {
-            setSubmitted(false); // Reset loading state
-        }
-    };
-
-useEffect(() =>{
-  const accessToken = localStorage.getItem("access_token");
-  const expiresIn = localStorage.getItem("expires_in");
-
-  if (!accessToken || !expiresIn || Date.now() >= parseInt(expiresIn)) {
-    if (accessToken && expiresIn && Date.now() >= parseInt(expiresIn)) {
-      console.log("Access token expired for route protection. Logging out.");
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('expires_in');
-    } else if (!accessToken) {
-      console.log("No access token found. Ensuring logout state.");
+      navigate("/home");
+    } catch (err) {
+      console.log(err);
+      setError(
+        err.response?.data?.message ||
+        "Unable to log in. Please check your credentials."
+      );
+    } finally {
+      setLoading(false);
     }
-  } else {
-    navigate("/home")
-  }
+  };
 
+  // auto check token validity
+  useEffect(() => {
+    const accessToken = localStorage.getItem("access_token");
+    const expiresIn = localStorage.getItem("expires_in");
 
-}, [navigate])
+    if (accessToken && expiresIn) {
+      const isExpired = Date.now() >= parseInt(expiresIn);
+
+      if (isExpired) {
+        console.log("Token expired. Logging out.");
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("expires_in");
+        localStorage.removeItem("role");
+      } else {
+        navigate("/home");
+      }
+    }
+  }, [navigate]);
+
   return (
-    <div className="container-fluids">
+    <div className="bg-dark min-vh-100">
       <Header logo={logo} />
+
+      {/* PAGE CONTENT */}
       <div className="container py-5 mt-5">
-        <h4 className="text-light">Let's sign you in</h4>
-        <p className="sm text-secondary">
-          Fill in your details below to login into your account
-        </p>
+        <div className="mx-auto" style={{ maxWidth: "500px" }}>
+          <h4 className="text-light">Let's sign you in</h4>
+          <p className="text-secondary">
+            Fill in your details below to log into your account.
+          </p>
+        </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="p-4 p-md-5 shadow rounded mx-auto"
-          style={{ backgroundColor: "#1f1f1f", maxWidth: "500px" }}
+          style={{ backgroundColor: "#0B0B0B", maxWidth: "500px" }}
         >
           <form onSubmit={handleSubmit}>
+            {/* Email Input */}
             <div className="mb-3">
-              <label className="form-label text-secondary sm">Email</label>
+              <label className="form-label text-secondary">Email</label>
               <input
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                className="form-control form-control-lg text-white sm"
+                className="form-control form-control-lg text-white"
                 placeholder="Enter your email"
                 style={{ backgroundColor: "#2c2c2c", border: "none" }}
                 required
               />
             </div>
 
+            {/* Password Input */}
             <div className="mb-4">
-              <label className="form-label text-secondary sm">Password</label>
+              <label className="form-label text-secondary">Password</label>
               <input
                 type="password"
                 name="password"
                 value={form.password}
                 onChange={handleChange}
-                className="form-control sm form-control-lg text-white"
+                className="form-control form-control-lg text-white"
                 placeholder="Enter your password"
                 style={{ backgroundColor: "#2c2c2c", border: "none" }}
                 required
               />
             </div>
 
-            <div className="text-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn btn-warning w-100 rounded"
-                type="submit"
-                disabled={submitted}
-              >
-                {submitted ? "Logging in..." : "Login"}
-              </motion.button>
-            </div>
+            {/* Create Account */}
+            <p className="text-secondary mb-4">
+              Don’t have an account?{" "}
+              <Link to="/create" className="text-warning">
+                Create Account
+              </Link>
+            </p>
 
+            {/* Submit Button */}
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn btn-warning w-100 rounded"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Logging in..." : "Login"}
+            </motion.button>
+
+            {/* Error Message */}
             {error && (
               <div className="alert alert-danger text-center mt-3 rounded-pill">
                 {error}
@@ -129,6 +148,7 @@ useEffect(() =>{
           </form>
         </motion.div>
       </div>
+
       <Footer logo={logo} />
     </div>
   );

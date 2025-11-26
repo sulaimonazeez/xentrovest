@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Select from "react-select";
 import countryList from "react-select-country-list";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 
 const SignupForm = () => {
   const [form, setForm] = useState({
@@ -32,7 +34,7 @@ const SignupForm = () => {
     setError(null);
 
     try {
-      const response = await axios.post("https://xentrovest.pythonanywhere.com/api/create/", {
+      const response = await axios.post("https://backend-logic-ohjo.vercel.app/api/create/", {
         fullname: form.fullname,
         email: form.email,
         phone: form.phone,
@@ -55,7 +57,18 @@ const SignupForm = () => {
         password: "",
       });
     } catch (err) {
-      setError("Failed to register. " + (err.response?.data?.detail || "Check server."));
+      if (err.response) {
+    console.log("Server error details:", err.response.data);
+    setError(`Failed to register: ${err.response.data.message || err.message}`);
+  } else if (err.request) {
+    // Request was made but no response (e.g., network issue)
+    console.log("No response from server:", err.request);
+    setError(`No response from server. Please check your connection. ${JSON.stringify(err.request, null, 2)}`);
+  } else {
+    // Other unexpected error
+    console.log("Unexpected error:", err.message);
+    setError("Something went wrong. " + err.message);
+  }
     } finally {
       setSubmitted(false);
     }
@@ -63,7 +76,7 @@ const SignupForm = () => {
 
   return (
     <div className="mt-5 container py-5">
-      <div className="mt-2">
+      <div className="mx-auto" style={{maxWidth:"600px"}}>
         <h3 className="text-light text-white">Create an Account</h3>
         <p className="sm text-secondary">
           Fill in your details below to start investing and building your portfolio
@@ -123,6 +136,7 @@ const SignupForm = () => {
           <div className="mb-3">
             <label className="form-label text-secondary sm">Country</label>
             <Select
+              name="country"
               options={countries}
               value={form.country}
               onChange={handleCountryChange}
@@ -144,7 +158,7 @@ const SignupForm = () => {
           </div>
 
           <div className="mb-4">
-            <label className="form-label text-light">Password</label>
+            <label className="form-label text-secondary">Password</label>
             <input
               type="password"
               name="password"
@@ -156,7 +170,9 @@ const SignupForm = () => {
               required
             />
           </div>
-
+          <div className="mb-4">
+            <p className="text-secondary">Already have account ? <Link to="/login">Login</Link></p>
+          </div>
           <div className="text-center">
             <motion.button
               whileHover={{ scale: 1.05 }}
