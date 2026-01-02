@@ -1,21 +1,21 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 //import { AuthContext } from "./AuthContext";
-import PrivateRoute from "./privateRoute";
+import PrivateRoute from "./context/privateRoute";
 import './App.css';
 // import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import ModelDetail from "./admin/modelDetail.jsx";
-import Landing from "./component/landingpage.jsx";
-import Login from "./component/login.jsx";
-import SignUp from "./component/signup.jsx";
-import Admin from "./admin.jsx";
-import Home from "./component/home.jsx";
-import HomeInvestment from "./component/investHome.jsx";
-import Deposit from "./component/deposit.jsx";
-import TransactionSuccess from "./component/transaction.jsx";
-import Refferal from "./component/refferal.jsx";
-import Profile from "./component/profile.jsx";
-import WithdrawBTC from "./component/withdraw.jsx";
+import ModelDetail from "./admin/components/modelDetail.jsx";
+import Landing from "./pages/landingpage.jsx";
+import Login from "./pages/login.jsx";
+import SignUp from "./pages/signup.jsx";
+import Admin from "./admin/admin.jsx";
+import Home from "./pages/home.jsx";
+import HomeInvestment from "./pages/investHome.jsx";
+import Deposit from "./pages/deposit.jsx";
+import TransactionSuccess from "./pages/transaction.jsx";
+import Refferal from "./pages/refferal.jsx";
+import Profile from "./pages/profile.jsx";
+import WithdrawBTC from "./pages/withdraw.jsx";
 //import { logout } from './component/auth';
 
 

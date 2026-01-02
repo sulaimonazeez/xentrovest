@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate, Link} from "react-router-dom";
 
 const SignupForm = () => {
+  const baseURL = process.env.REACT_APP_API_URL;
   const [form, setForm] = useState({
     fullname: "",
     email: "",
@@ -34,7 +35,7 @@ const SignupForm = () => {
     setError(null);
 
     try {
-      const response = await axios.post("https://backend-logic-ohjo.vercel.app/api/create/", {
+      const response = await axios.post(`${baseURL}/api/create/`, {
         fullname: form.fullname,
         email: form.email,
         phone: form.phone,

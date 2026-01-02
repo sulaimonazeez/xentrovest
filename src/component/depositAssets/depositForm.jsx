@@ -1,5 +1,5 @@
 import React, { useState } from 'react'; import { QRCodeCanvas } from "qrcode.react";
-import axiosInstance from "../utility.jsx";
+import axiosInstance from "../../api/utility.jsx";
 import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';

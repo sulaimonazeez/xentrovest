@@ -1,6 +1,6 @@
 import React from "react";
-import Investment from "./homeAssets/investment.jsx";
-import AuthHeader from "./homeAssets/authHeader.jsx";
+import Investment from "../component/homeAssets/investment.jsx";
+import AuthHeader from "../component/homeAssets/authHeader.jsx";
 import logo from "../assets/logo.svg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';

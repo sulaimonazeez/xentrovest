@@ -1,11 +1,11 @@
 import React from "react";
-import AuthHeader from "./homeAssets/authHeader.jsx";
+import AuthHeader from "../component/homeAssets/authHeader.jsx";
 import "../css/home.css";
 import logo from "../assets/logo.svg";
-import Dashboard from "./homeAssets/dashboard.jsx";
-import LiveTrade from "./homeAssets/liveTrade.jsx";
-import CryptoMarket from "./homeAssets/markets.jsx";
-import RecentTransaction from "./homeAssets/recentTransaction.jsx";
+import Dashboard from "../component/homeAssets/dashboard.jsx";
+import LiveTrade from "../component/homeAssets/liveTrade.jsx";
+import CryptoMarket from "../component/homeAssets/markets.jsx";
+import RecentTransaction from "../component/homeAssets/recentTransaction.jsx";
 //import Investment from "./homeAssets/investment.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';

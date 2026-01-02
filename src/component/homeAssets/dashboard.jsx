@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BalanceGrid from "./balanceGrid.jsx";
-import axiosInstance from "../utility.jsx";
+import axiosInstance from "../../api/utility.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 

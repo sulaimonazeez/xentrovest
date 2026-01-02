@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import AuthHeader from "./homeAssets/authHeader.jsx";
+import AuthHeader from "../component/homeAssets/authHeader.jsx";
 import { BsArrowUpRight } from "react-icons/bs";
 import "../App.css";
-import axiosInstance from "./utility.jsx";
+import axiosInstance from "../api/utility.jsx";
 import logo from "../assets/logo.svg";
 
 const TransactionSuccess = () => {

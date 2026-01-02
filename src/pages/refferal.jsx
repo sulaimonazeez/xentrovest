@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AuthHeader from "./homeAssets/authHeader.jsx";
+import AuthHeader from "../component/homeAssets/authHeader.jsx";
 import logo from "../assets/logo.svg";
 import { BiSearch } from "react-icons/bi";
 import "../css/home.css";
@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const Refferal = () => {
-  const referralLink = "https://tradenex.netlify.app/register?ref=yourusername";
+  const referralLink = "https://xentrovest.netlify.app/register?ref=yourusername";
   const [copied, setCopied] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 

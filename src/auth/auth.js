@@ -1,4 +1,4 @@
-import axiosInstance from "./utility";
+import axiosInstance from "../api/utility";
 
 export const logout = async () => {
   try {

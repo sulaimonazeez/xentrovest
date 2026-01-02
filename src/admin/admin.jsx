@@ -1,5 +1,5 @@
-import NavBar from "./admin/navbar.jsx";
-import Main from "./admin/main.jsx";
+import NavBar from "./components/navbar.jsx";
+import Main from "./components/main.jsx";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

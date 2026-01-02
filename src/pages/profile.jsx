@@ -1,35 +1,26 @@
 import React, { useEffect, useState } from "react";
-import AuthHeader from "./homeAssets/authHeader.jsx";
-import { logout } from "./auth";
-import axios from "axios";
+import AuthHeader from "../component/homeAssets/authHeader.jsx";
+//import { logout } from "../auth/auth";
+//import axios from "axios";
 import logo from "../assets/logo.svg";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axiosInstance from "../api/utility.jsx";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const Profile = () => {
+  const baseURL = process.env.REACT_APP_API_URL;
   const [email, setEmail] = useState("loading...");
   const [firstName, setFirstName] = useState("loading...");
   const [lastName, setLastName] = useState("loading...");
   const [phone, setPhone] = useState("loading...");
   const [country, setCountry] = useState("loading...");
 
-  const access_token = localStorage.getItem("access_token");
-
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(
-          "https://backend-logic-ohjo.vercel.app/auth/profile/",
-          {
-            headers: {
-              Authorization: `Bearer ${access_token}`,
-            },
-          }
-        );
-
+        const response = await axiosInstance.get(
+          `${baseURL}/auth/profile/`);
         const data = response.data;
-
-        // Split fullname into first and last name
         const names = data.fullname ? data.fullname.split(" ") : ["", ""];
         setFirstName(names[0]);
         setLastName(names.slice(1).join(" "));
@@ -38,14 +29,11 @@ const Profile = () => {
         setCountry(data.country || "");
       } catch (err) {
         console.error(err);
-        // Token expired or invalid
-        localStorage.removeItem("access_token");
-        logout();
       }
     };
 
-    if (access_token) fetchProfile();
-  }, [access_token]);
+    fetchProfile();
+  }, [baseURL]);
 
   // Generate initials dynamically
   const initials = `${firstName[0] || ""}${lastName[0] || ""}`.toUpperCase();

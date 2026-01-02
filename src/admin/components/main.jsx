@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./css/main.css";
 import MainUser from "./mainUser.jsx";
 import ModelApp from "./modelApp.jsx";
-import axiosInstance from "../component/utility.jsx";
+import axiosInstance from "../../api/utility.jsx";
 
 const Main = () => {
   const [data, setData] = useState([]); // <-- FIXED
