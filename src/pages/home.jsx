@@ -7,14 +7,6 @@ import { AuthContext } from "../context/AuthContext";
 
 const fade = (delay = 0) => ({ initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] } });
 
-const CryptoMarket = () => {
-  const [coins, setCoins] = useState([]);
-  useEffect(() => {
-    fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=8&page=1")
-      .then(r => r.json()).then(setCoins).catch(() => {});
-  }, []);
-  return coins;
-};
 
 const Home = () => {
   const { user } = useContext(AuthContext);

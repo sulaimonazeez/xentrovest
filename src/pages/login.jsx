@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import axiosInstance from "../api/utility";
+//import axiosInstance from "../api/utility";
 import axios from "axios";
 import logo from "../assets/logo.svg";
 

@@ -16,11 +16,11 @@ const Footer = () => (
           </p>
           <div style={{ display: "flex", gap: "0.75rem", marginTop: "1.5rem" }}>
             {["twitter", "telegram", "instagram", "youtube"].map(s => (
-              <a key={s} href="#" style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(240,165,0,0.1)", border: "1px solid rgba(240,165,0,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--muted)", textDecoration: "none", fontSize: "0.9rem", transition: "all 0.2s" }}
+              <Link key={s} to="#" style={{ width: 36, height: 36, borderRadius: "50%", background: "rgba(240,165,0,0.1)", border: "1px solid rgba(240,165,0,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--muted)", textDecoration: "none", fontSize: "0.9rem", transition: "all 0.2s" }}
                 onMouseEnter={e => { e.currentTarget.style.color = "var(--gold)"; e.currentTarget.style.borderColor = "var(--gold)"; }}
                 onMouseLeave={e => { e.currentTarget.style.color = "var(--muted)"; e.currentTarget.style.borderColor = "rgba(240,165,0,0.2)"; }}>
                 <i className={`bi bi-${s}`}></i>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
