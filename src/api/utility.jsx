@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.response.use(
   res => res,
   err => {
-    if (err.response?.status === 401) window.location.href = "/login";
+    if (err.response?.status === 401) console.error("Unathorize");
     return Promise.reject(err);
   }
 );
