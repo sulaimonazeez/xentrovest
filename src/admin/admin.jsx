@@ -1,23 +1,23 @@
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import NavBar from "./components/navbar.jsx";
 import Main from "./components/main.jsx";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-const Admin = () =>{
+const Admin = () => {
   const navigate = useNavigate();
-  let role = localStorage.getItem("role");
-  useEffect(() =>{
-    if (role === "user") {
-      navigate("/home");
-    }
-  }, [navigate, role])
-  
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user && user.role !== "admin") navigate("/home");
+  }, [user, navigate]);
+
   return (
-    <div>
+    <div style={{ minHeight: "100vh", background: "var(--obsidian)" }}>
       <NavBar />
       <Main />
     </div>
-  )
-}
+  );
+};
 
 export default Admin;
