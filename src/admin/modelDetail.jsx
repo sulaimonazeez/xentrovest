@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import NavBar from "./navbar.jsx";
 import { useParams, useNavigate } from "react-router-dom";
 import UserTable from "./userTable.jsx";
 import axiosInstance from "../api/utility.jsx";
 import { ArrowLeft, Plus, X, CheckCircle2, RefreshCw, Database } from "lucide-react";
+
+/* ─── Constants ─── */
+// Moved outside to provide a stable reference and fix Line 108/125 warning
+const EXCLUDE = ["_id", "__v", "password", "createdAt", "updatedAt", "CreatedAt", "UpdatedAt", "timestamps"];
 
 /* ── Shared modal shell ── */
 const ModalShell = ({ title, subtitle, onClose, children, footer }) => (
@@ -105,22 +109,29 @@ const ModelDetail = () => {
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [error, setError]           = useState("");
 
-  const EXCLUDE = ["_id", "__v", "password", "createdAt", "updatedAt", "CreatedAt", "UpdatedAt", "timestamps"];
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const res = await axiosInstance.get(`/model/${model}`);
       setUsers(res.data);
-      // derive add-fields from first record
+      
       if (res.data?.[0]) {
+        // Logic for deriving fields using the static EXCLUDE constant
         setAddFields(Object.keys(res.data[0]).filter(k => !EXCLUDE.includes(k)));
       }
-    } catch (err) { console.error(err); }
-    finally { setLoading(false); }
-  };
+    } catch (err) { 
+      console.error("Fetch Error:", err); 
+    } finally { 
+      setLoading(false); 
+    }
+  }, [model]); // Removed EXCLUDE from deps as it is now a static global constant
 
-  useEffect(() => { if (model) fetchData(); }, [model]);
+  useEffect(() => {
+    if (model) {
+      fetchData();
+    }
+  }, [fetchData, model]); // Added model to satisfy Line 132 warning
+
 
   /* Edit */
   const handleEdit = (user) => { setSelectedUser(user); setFormData({ ...user }); setError(""); };
