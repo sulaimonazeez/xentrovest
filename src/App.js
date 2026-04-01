@@ -8,8 +8,8 @@ import Home from "./pages/home.jsx";
 import HomeInvestment from "./pages/investHome.jsx";
 import Deposit from "./pages/deposit.jsx";
 import { TransactionSuccess, Profile, WithdrawBTC, Refferal } from "./pages/otherPages.jsx";
-import Admin from "./admin/admin.jsx";
-import ModelDetail from "./admin/components/modelDetail.jsx";
+import Admin from "./pages/admin.jsx";
+import ModelDetail from "./admin/modelDetail.jsx";
 
 function App() {
   return (
