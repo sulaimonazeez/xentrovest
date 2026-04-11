@@ -99,7 +99,7 @@ const Home = () => {
                 </div>
                 <div style={{ textAlign: "right" }}>
                   <div style={{ fontWeight: 700, color: "var(--gold)", fontFamily: "'JetBrains Mono'", fontSize: "0.9rem" }}>${tx.amount}</div>
-                  <span className="badge-pending">Pending</span>
+                  <span className="badge-pending">{tx.status}</span>
                 </div>
               </div>
             ))}

@@ -52,7 +52,7 @@ export const TransactionSuccess = () => {
               <div style={{ textAlign: "right" }}>
                 <div style={{ fontFamily: "'Bebas Neue'", fontSize: "1.3rem", color: "var(--gold)" }}>${item.amount}</div>
                 <div style={{ fontSize: "0.72rem", color: "var(--muted)" }}>{fmt(item.date)}</div>
-                <span className="badge-pending">Pending</span>
+                <span className="badge-pending">{item.status}</span>
               </div>
             </motion.div>
           ))}
